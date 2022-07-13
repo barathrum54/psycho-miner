@@ -6,6 +6,9 @@ export default class MenuData {
   }
   getMenu = () => {
     return (this.dev ? this.#devMenu() : this.#prodMenu());
+    // return this.#prodMenu();
+    // console.log('GET MENU')
+    // return (this.dev ? this.#devMenu() : this.#prodMenu());
   };
   #devMenu = () => {
     return [
@@ -19,22 +22,40 @@ export default class MenuData {
           },
         ],
       },
+      // {
+      //   label: "Pages",
+      //   icon: "pi pi-fw pi-clone",
+      //   items: [
+      //     { label: "User Profile", icon: "pi pi-fw pi-user-edit", to: "/detail/2" },
+      //     { label: "Landing", icon: "pi pi-fw pi-globe", to: "/landing" },
+      //     { label: "Login", icon: "pi pi-fw pi-sign-in", to: "/login" },
+      //     { label: "Error", icon: "pi pi-fw pi-times-circle", to: "/error" },
+      //     { label: "FAQ", icon: "pi pi-fw pi-calendar", to: "/faq" },
+      //     {
+      //       label: "Not Found",
+      //       icon: "pi pi-fw pi-exclamation-circle",
+      //       to: "/notfound",
+      //     },
+      //     { label: "Access Denied", icon: "pi pi-fw pi-lock", to: "/access" },
+      //     { label: "Empty", icon: "pi pi-fw pi-circle-off", to: "/empty" },
+      //   ],
+      // },
       {
         label: "Pages",
         icon: "pi pi-fw pi-clone",
         items: [
-          { label: "User Profile", icon: "pi pi-fw pi-user-edit", to: "/detail/2" },
-          { label: "Landing", icon: "pi pi-fw pi-globe", to: "/landing" },
-          { label: "Login", icon: "pi pi-fw pi-sign-in", to: "/login" },
-          { label: "Error", icon: "pi pi-fw pi-times-circle", to: "/error" },
-          { label: "FAQ", icon: "pi pi-fw pi-calendar", to: "/faq" },
-          {
-            label: "Not Found",
-            icon: "pi pi-fw pi-exclamation-circle",
-            to: "/notfound",
-          },
-          { label: "Access Denied", icon: "pi pi-fw pi-lock", to: "/access" },
-          { label: "Empty", icon: "pi pi-fw pi-circle-off", to: "/empty" },
+          { label: "Miners", icon: "pi pi-fw pi-user-edit", to: "/detail/2" },
+          { label: "Community", icon: "pi pi-fw pi-globe", to: "/landing" },
+          // { label: "Login", icon: "pi pi-fw pi-sign-in", to: "/login" },
+          // { label: "Error", icon: "pi pi-fw pi-times-circle", to: "/error" },
+          { label: "FAQ", icon: "pi pi-fw pi-question-circle", to: "/faq" },
+          // {
+            // label: "Not Found",
+            // icon: "pi pi-fw pi-exclamation-circle",
+            // to: "/notfound",
+          // },
+          { label: "Referrals", icon: "pi pi-fw pi-users", to: "/access" },
+          // { label: "Empty", icon: "pi pi-fw pi-circle-off", to: "/empty" },
         ],
       },
     ];

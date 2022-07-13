@@ -96,6 +96,7 @@ import TriStateCheckbox from 'primevue/tristatecheckbox';
 
 import CodeHighlight from './AppCodeHighlight';
 import BlockViewer from './BlockViewer';
+import MvpComponent from "@/components/MvpComponent";
 
 import { createPinia } from "pinia";
 
@@ -121,6 +122,7 @@ app.directive('badge', BadgeDirective);
 app.directive('styleclass', StyleClass);
 
 app.component('Accordion', Accordion);
+app.component('MvpComponent', MvpComponent);
 app.component('AccordionTab', AccordionTab);
 app.component('AutoComplete', AutoComplete);
 app.component('Avatar', Avatar);

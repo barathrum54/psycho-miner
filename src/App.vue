@@ -2,7 +2,7 @@
   <div :class="containerClass" @click="onWrapperClick">
     <AppTopBar @menu-toggle="onMenuToggle" />
     <div class="layout-sidebar" @click="onSidebarClick">
-      <AppMenu :model="menu" @menuitem-click="onMenuItemClick" />
+      <AppMenu :model="_menu" @menuitem-click="onMenuItemClick" />
     </div>
 
     <div class="layout-main-container">
@@ -33,7 +33,6 @@ import AppFooter from "./AppFooter.vue";
 import MenuData from "./service/MenuData.js";
 import { useConfigStore } from "./store/config.store.js";
 let menuData = new MenuData(true);
-
 export default {
   emits: ["change-theme"],
   data() {
@@ -42,13 +41,16 @@ export default {
       staticMenuInactive: false,
       overlayMenuActive: false,
       mobileMenuActive: false,
-      menu: menuData.getMenu(),
     };
   },
   watch: {
     $route() {
       this.menuActive = false;
       this.$toast.removeAllGroups();
+    },
+    config(a) {
+      // menuData.dev = config.c_c("menuDebug");
+      // this._menu = this.menuData.getMenu();
     },
   },
   methods: {
@@ -60,9 +62,11 @@ export default {
 
       this.menuClick = false;
     },
-    onMounted() {
+    beforeMount() {
       const config = useConfigStore();
-      config.c_c({ fullDebug: true });
+    },
+    onMounted() {
+      // config.c_c({ fullDebug: true });
     },
     onMenuToggle() {
       this.menuClick = true;
@@ -144,6 +148,10 @@ export default {
       return this.$appState.darkTheme
         ? "images/logo-white.svg"
         : "images/logo.svg";
+    },
+    _menu() {
+      console.log(menuData);
+      return menuData.getMenu();
     },
   },
   beforeUpdate() {
