@@ -107,7 +107,7 @@ router.beforeEach(function(to, from, next) {
 
 const app = createApp(AppWrapper);
 const pinia = createPinia()
-app.config.globalProperties.$appState = reactive({ theme: 'lara-light-indigo', darkTheme: false });
+app.config.globalProperties.$appState = reactive({ theme: 'bootstrap4-dark-blue', darkTheme: true , isAuth: false});
 app.config.globalProperties.$config = reactive({menuDebug: false});
 app.use(PrimeVue, { ripple: true, inputStyle: 'outlined' });
 app.use(ConfirmationService);

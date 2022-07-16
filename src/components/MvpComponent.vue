@@ -14,6 +14,7 @@
           label="INVEST"
           icon="pi pi-chart-line"
           :loading="investBtnLoad"
+          :disabled="!isAuth"
           @click="investBtnAction"
         />
       </div>
@@ -21,18 +22,21 @@
   </div>
 </template>
 <script setup>
-import { onMounted, ref } from "vue";
-
+import { computed, onMounted, ref } from "vue";
 let investBtnLoad = ref(false);
-onMounted(() => {
-  console.log("mounted");
+let isAuth = computed(() => {
+  return window.userStore.isAuth;
 });
+onMounted(() => {
+  // console.log("mounted");
+});
+
 const investBtnAction = () => {
-    investBtnLoad.value = true;
-    setTimeout(() => {
-        investBtnLoad.value = false;
-    }, 2000);
-}
+  investBtnLoad.value = true;
+  setTimeout(() => {
+    investBtnLoad.value = false;
+  }, 2000);
+};
 </script>
 <style scoped>
 .container {

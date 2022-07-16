@@ -5,7 +5,7 @@
       <AppMenu :model="_menu" @menuitem-click="onMenuItemClick" />
     </div>
 
-    <div class="layout-main-container">
+    <div class="layout-main-container bg-tbd">
       <div class="layout-main">
         <router-view />
       </div>
@@ -13,7 +13,7 @@
     </div>
 
     <AppConfig :layoutMode="layoutMode" @layout-change="onLayoutChange" />
-    <AppDev :layoutMode="layoutMode" @layout-change="onLayoutChange" />
+    <!-- <AppDev :layoutMode="layoutMode" @layout-change="onLayoutChange" /> -->
     <transition name="layout-mask">
       <div
         class="layout-mask p-component-overlay"
@@ -27,11 +27,9 @@
 import AppTopBar from "./AppTopbar.vue";
 import AppMenu from "./AppMenu.vue";
 import AppConfig from "./AppConfig.vue";
-import AppDev from "./AppDev.vue";
+// import AppDev from "./AppDev.vue";
 import AppFooter from "./AppFooter.vue";
-//
 import MenuData from "./service/MenuData.js";
-import { useConfigStore } from "./store/config.store.js";
 let menuData = new MenuData(true);
 export default {
   emits: ["change-theme"],
@@ -61,12 +59,6 @@ export default {
       }
 
       this.menuClick = false;
-    },
-    beforeMount() {
-      const config = useConfigStore();
-    },
-    onMounted() {
-      // config.c_c({ fullDebug: true });
     },
     onMenuToggle() {
       this.menuClick = true;
@@ -150,7 +142,7 @@ export default {
         : "images/logo.svg";
     },
     _menu() {
-      console.log(menuData);
+      // console.log(menuData);
       return menuData.getMenu();
     },
   },
@@ -163,7 +155,7 @@ export default {
     AppTopBar: AppTopBar,
     AppMenu: AppMenu,
     AppConfig: AppConfig,
-    AppDev: AppDev,
+    // AppDev: AppDev,
     AppFooter: AppFooter,
   },
 };
@@ -171,4 +163,20 @@ export default {
 
 <style lang="scss">
 @import "./App.scss";
+.bg-tbd::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 1;
+  top: 0;
+  background-image: url("assets/blood-bg.png");
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
 </style>
